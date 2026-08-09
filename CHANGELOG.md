@@ -1,3 +1,10 @@
+## v65 - OBS 16:9 and 9:16 overlay screens
+- Added `/obs16.9` and `/obs9.16` output routes.
+- Both routes start with green chroma background for OBS keying.
+- Both routes follow the live slide, scripture, manual verse, and poll messages.
+- Poll results render as full OBS overlays sized separately for horizontal and vertical scenes.
+- Existing `/obslowerthirds`, `/obsslides`, projector, scripture, confidence, admin, audience, and lesson behavior remains unchanged.
+
 ## v64 - All-slide scripture output guard
 - Applied the scripture-screen guard to every lesson and every slide.
 - Only slides with type `sc` can send content to `/scriptures`.
