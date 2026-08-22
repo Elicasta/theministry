@@ -90,6 +90,15 @@ export default async function handler(req, res) {
       if (!promptId || !text) return res.status(400).json({ error: 'Prompt and response are required' });
 
       const category = `LWP:${promptId}${prompt ? ` | ${prompt}` : ''}`.slice(0, 1000);
+      const deleteParams = new URLSearchParams();
+      deleteParams.set('email_hash', `eq.${emailHash}`);
+      deleteParams.set('session', `eq.${SESSION_NUMBER}`);
+      deleteParams.set('category', `eq.${category}`);
+      await fetch(`${SB_URL}/rest/v1/responses?${deleteParams.toString()}`, {
+        method: 'DELETE',
+        headers: headers(SB_KEY)
+      }).catch(() => null);
+
       const insert = await fetch(`${SB_URL}/rest/v1/responses`, {
         method: 'POST',
         headers: headers(SB_KEY),
