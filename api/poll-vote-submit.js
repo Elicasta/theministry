@@ -10,20 +10,27 @@ function hashEmail(email) {
   const e = normalizeEmail(email);
   return e ? crypto.createHash('sha256').update(e).digest('hex') : null;
 }
-async function supaFetch(SB_URL, SB_KEY, path, opts = {}) {
-  const r = await fetch(`${SB_URL}/rest/v1/${path}`, {
-    ...opts,
-    headers: {
-      apikey: SB_KEY,
-      Authorization: `Bearer ${SB_KEY}`,
-      'Content-Type': 'application/json',
-      ...(opts.headers || {})
-    }
-  });
-  const text = await r.text().catch(() => '');
-  let json = null;
-  try { json = text ? JSON.parse(text) : null; } catch(e) {}
-  return { ok: r.ok, status: r.status, text, json };
+async function supaFetch(SB_URL, SB_KEY, path, opts = {}, timeoutMs = 5500) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/${path}`, {
+      ...opts,
+      signal: controller.signal,
+      headers: {
+        apikey: SB_KEY,
+        Authorization: `Bearer ${SB_KEY}`,
+        'Content-Type': 'application/json',
+        ...(opts.headers || {})
+      }
+    });
+    const text = await r.text().catch(() => '');
+    let json = null;
+    try { json = text ? JSON.parse(text) : null; } catch(e) {}
+    return { ok: r.ok, status: r.status, text, json };
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 export default async function handler(req, res) {
@@ -57,14 +64,13 @@ export default async function handler(req, res) {
   };
 
   try {
-    // Make sure the poll row exists before inserting a vote, even if the launch save failed.
     const q = new URLSearchParams();
     q.set('select', 'id,poll_id');
     q.set('poll_id', `eq.${pollId}`);
     q.set('limit', '1');
     const existingPoll = await supaFetch(SB_URL, SB_KEY, `lesson_polls?${q.toString()}`);
     if (existingPoll.ok && Array.isArray(existingPoll.json) && !existingPoll.json.length) {
-      await supaFetch(SB_URL, SB_KEY, 'lesson_polls', {
+      const created = await supaFetch(SB_URL, SB_KEY, 'lesson_polls', {
         method: 'POST',
         headers: { Prefer: 'return=minimal' },
         body: JSON.stringify({
@@ -78,9 +84,9 @@ export default async function handler(req, res) {
           status: 'live'
         })
       });
+      if (!created.ok && created.status !== 409) return res.status(502).json({ error: 'Poll initialization failed' });
     }
 
-    // Prefer duplicate prevention by session_id. Fall back to email_hash. Fall back to client_vote_id.
     let existingVote = null;
     if (sessionId) {
       const vq = new URLSearchParams();
@@ -107,7 +113,6 @@ export default async function handler(req, res) {
     }
 
     if (existingVote && existingVote.ok && Array.isArray(existingVote.json) && existingVote.json.length) {
-      // Update the answer instead of inserting another vote.
       const p = new URLSearchParams();
       p.set('id', `eq.${existingVote.json[0].id}`);
       const write = await supaFetch(SB_URL, SB_KEY, `lesson_poll_votes?${p.toString()}`, {
@@ -115,7 +120,7 @@ export default async function handler(req, res) {
         headers: { Prefer: 'return=minimal' },
         body: JSON.stringify(payload)
       });
-      if (!write.ok) return res.status(500).json({ error: 'Poll vote update failed', details: write.text, payload_keys: Object.keys(payload) });
+      if (!write.ok) return res.status(502).json({ error: 'Poll vote update failed' });
       return res.status(200).json({ ok: true, saved: true, updated: true });
     }
 
@@ -124,9 +129,10 @@ export default async function handler(req, res) {
       headers: { Prefer: 'return=minimal' },
       body: JSON.stringify(payload)
     });
-    if (!write.ok) return res.status(500).json({ error: 'Poll vote save failed', details: write.text, payload_keys: Object.keys(payload) });
+    if (!write.ok) return res.status(502).json({ error: 'Poll vote save failed' });
     return res.status(200).json({ ok: true, saved: true });
   } catch (e) {
-    return res.status(500).json({ error: e.message });
+    if (e?.name === 'AbortError') return res.status(504).json({ error: 'Poll vote timed out. Please try again.' });
+    return res.status(500).json({ error: 'Poll vote unavailable. Please try again.' });
   }
 }
