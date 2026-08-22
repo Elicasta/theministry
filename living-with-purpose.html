@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Living With Purpose</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d0f;--panel:#11151a;--panel2:#171c22;--ink:#f4efe5;--muted:#858e97;--line:#28313a;--gold:#c6a46a;--sage:#91a69a;--danger:#d46358;--fd:'Bebas Neue',Impact,sans-serif;--fc:'Barlow Condensed','Arial Narrow',sans-serif;--fb:'Barlow',Arial,sans-serif;--fp:'Playfair Display',Georgia,serif}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--fb)}button{font:inherit}.hidden{display:none!important}
+/* REMOTE */
+.remote{min-height:100vh;background:linear-gradient(180deg,#0b0d0f,#0e1216)}
+.remote-top{position:sticky;top:0;z-index:20;height:58px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,13,15,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-family:var(--fd);font-size:1.2rem;letter-spacing:.08em}.brand span{color:var(--gold)}
+.status{font-family:var(--fc);font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:#59616a}.dot.live{background:#35cf7c;box-shadow:0 0 10px rgba(53,207,124,.5)}
+.remote-body{max-width:860px;margin:0 auto;padding:14px 14px 100px}.kicker{font-family:var(--fc);font-size:.58rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.now{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px;margin-bottom:10px}.now-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.now-num{font-family:var(--fd);font-size:3rem;line-height:.8;color:var(--gold)}.now-title{font-family:var(--fc);font-weight:800;font-size:1.35rem;line-height:1.02;margin-top:2px}.now-type{font-family:var(--fc);font-size:.58rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-top:6px}.notes{font-size:.88rem;line-height:1.45;color:#c1c6cb;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}.next-cue{margin-top:12px;border-left:3px solid var(--sage);padding:8px 10px;background:#0c1014;font-family:var(--fc);font-size:.72rem;color:#b8c2bd}.next-cue strong{color:var(--sage);text-transform:uppercase;letter-spacing:.1em;font-size:.58rem;margin-right:6px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.btn{border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--ink);min-height:48px;padding:10px 12px;font-family:var(--fc);font-size:.76rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.btn:active{transform:scale(.985)}.btn.primary{background:var(--gold);border-color:var(--gold);color:#15120d}.btn.danger{color:#ffaaa1;border-color:rgba(212,99,88,.45)}.btn.full{grid-column:1/-1}.btn.small{min-height:35px;padding:6px 9px;font-size:.62rem;border-radius:7px}.btn.on{border-color:var(--gold);color:var(--gold)}
+.panel{border:1px solid var(--line);border-radius:14px;background:#0e1216;margin-top:10px;overflow:hidden}.panel summary{list-style:none;cursor:pointer;padding:13px 14px;font-family:var(--fc);font-size:.7rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}.panel summary::-webkit-details-marker{display:none}.panel summary:after{content:'+';color:var(--gold);font-size:1rem}.panel[open] summary:after{content:'−'}.panel-body{padding:0 10px 10px;max-height:48vh;overflow:auto}
+.slide-item{width:100%;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;display:grid;grid-template-columns:34px 1fr;gap:8px;text-align:left;padding:9px;margin-top:6px;cursor:pointer}.slide-item.on{border-color:var(--gold);background:rgba(198,164,106,.07)}.si-num{font-family:var(--fd);font-size:1.25rem;color:var(--muted)}.slide-item.on .si-num{color:var(--gold)}.si-type{font-family:var(--fc);font-size:.52rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.si-title{font-family:var(--fc);font-size:.82rem;font-weight:800;line-height:1.05;margin-top:2px}
+.verse{border-top:1px solid var(--line);padding:10px 2px}.verse:first-child{border-top:0}.v-ref{font-family:var(--fc);font-size:.74rem;font-weight:900;color:var(--gold)}.v-text{font-family:var(--fp);font-size:.72rem;line-height:1.35;color:#b6bbc0;margin:5px 0 8px}.remote-footer{font-family:var(--fc);font-size:.58rem;text-align:center;color:#565e66;letter-spacing:.1em;text-transform:uppercase;margin-top:20px}
+/* PROJECTOR */
+.projector{position:fixed;inset:0;overflow:hidden;background:#050607;cursor:none}.stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 78% 18%,rgba(145,166,154,.13),transparent 32%),linear-gradient(135deg,#0b0d0f,#111820)}.stage:before{content:'';position:absolute;inset:0;opacity:.55;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,#000,transparent 92%)}.stage-inner{position:relative;z-index:2;width:min(86vw,1500px)}
+.p-kicker{font-family:var(--fc);font-size:clamp(.8rem,1.35vw,1.25rem);font-weight:900;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}.p-title{font-family:var(--fd);font-size:clamp(4.2rem,9vw,10rem);line-height:.84;text-transform:uppercase;max-width:1280px}.p-title.medium{font-size:clamp(3.2rem,7vw,7.8rem)}.p-sub{font-family:var(--fp);font-style:italic;color:#bbb5ab;font-size:clamp(1.1rem,2vw,2rem);line-height:1.35;max-width:1050px;margin-top:23px}.p-ref{font-family:var(--fc);font-size:clamp(.85rem,1.4vw,1.25rem);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-top:24px}.rule{width:110px;height:3px;background:var(--gold);margin:24px 0}.p-verse{font-family:var(--fp);font-size:clamp(1.75rem,3.25vw,3.65rem);line-height:1.3;max-width:1340px}.p-verse:before{content:'“';color:var(--gold);font-size:1.8em;line-height:0;vertical-align:-.22em;margin-right:.07em}.points{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px;max-width:1280px}.points li{font-family:var(--fc);font-size:clamp(1.25rem,2.35vw,2.5rem);font-weight:600;line-height:1.07;padding-left:28px;position:relative}.points li:before{content:'';width:9px;height:9px;background:var(--gold);position:absolute;left:0;top:.4em}.statement{font-family:var(--fd);font-size:clamp(3.6rem,8vw,8.9rem);line-height:.87;text-transform:uppercase;max-width:1400px}.statement .accent{color:var(--gold)}.progression{display:flex;align-items:center;flex-wrap:wrap;gap:15px;margin-top:28px}.prog{font-family:var(--fd);font-size:clamp(2.2rem,5.5vw,5.8rem)}.arrow{font-size:clamp(1.4rem,3vw,3rem);color:var(--sage)}
+.standby{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(198,164,106,.08),transparent 35%),#080a0c}.standby .p-title{font-size:clamp(4rem,9vw,9rem)}.standby-mark{font-family:var(--fc);font-size:.7rem;font-weight:900;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}.standby-ref{font-family:var(--fp);font-style:italic;color:#928d84;font-size:clamp(1rem,1.6vw,1.5rem);margin-top:20px}.setup-fullscreen{position:fixed;right:18px;bottom:18px;z-index:20;cursor:pointer;border:1px solid #2a3036;background:rgba(0,0,0,.65);color:#717982;border-radius:7px;padding:8px 10px;font-family:var(--fc);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}.projector.live .setup-fullscreen{opacity:.08}.projector.live .setup-fullscreen:hover{opacity:1}
+.overlay{position:absolute;z-index:10;left:5.5vw;right:5.5vw;bottom:5.5vh;background:rgba(6,8,10,.94);border:1px solid rgba(198,164,106,.45);border-left:7px solid var(--gold);padding:25px 30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}.ov-ref{font-family:var(--fc);font-size:clamp(.8rem,1.2vw,1.1rem);font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.ov-text{font-family:var(--fp);font-size:clamp(1.3rem,2.25vw,2.35rem);line-height:1.25}.blackout{position:absolute;inset:0;background:#000;z-index:30}
+.connection{position:fixed;left:15px;bottom:14px;z-index:25;font-family:var(--fc);font-size:.5rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#343a40}.connection.live{color:#355d49}
+@media(max-width:600px){.remote-body{padding:10px 10px 90px}.now{padding:14px}.now-title{font-size:1.15rem}.controls{position:sticky;bottom:8px;z-index:15;background:rgba(11,13,15,.94);padding:8px;border:1px solid var(--line);border-radius:13px;backdrop-filter:blur(12px)}.panel-body{max-height:42vh}}
+</style>
+</head>
+<body>
+<div id="remote" class="remote hidden">
+  <header class="remote-top"><div class="brand">Living <span>With Purpose</span></div><div class="status"><span id="r-dot" class="dot"></span><span id="r-status">Connecting</span></div></header>
+  <main class="remote-body">
+    <section class="now">
+      <div class="kicker">Current Projector Cue</div>
+      <div class="now-head"><div><div id="now-title" class="now-title">Standby</div><div id="now-type" class="now-type">Not started</div></div><div id="now-num" class="now-num">00</div></div>
+      <div id="now-notes" class="notes">Projector is isolated from The Ministry / Kingdom Principles. Tap Start when you are ready.</div>
+      <div id="next-cue" class="next-cue"><strong>Next</strong>Cover</div>
+    </section>
+    <div class="controls">
+      <button class="btn" onclick="prevSlide()">← Prev</button>
+      <button id="next-btn" class="btn primary" onclick="nextSlide()">Start</button>
+      <button id="black-btn" class="btn" onclick="toggleBlack()">Black Screen</button>
+      <button class="btn danger" onclick="clearOverlay()">Clear Verse</button>
+    </div>
+    <details class="panel" open><summary>Slides</summary><div id="slide-list" class="panel-body"></div></details>
+    <details class="panel"><summary>Scripture Bank · Push to Main</summary><div id="verse-list" class="panel-body"></div></details>
+    <div class="remote-footer">Living With Purpose · Dedicated presentation room</div>
+  </main>
+</div>
+
+<div id="projector" class="projector hidden">
+  <div id="stage" class="stage"><div id="stage-inner" class="stage-inner"></div></div>
+  <div id="standby" class="standby"><div><div class="standby-mark">Singles Bible Lesson</div><div class="p-title">Living <span style="color:var(--gold)">With Purpose</span></div><div class="standby-ref">Seeking God's Best in Every Stage of Life · Matthew 6:33</div></div></div>
+  <div id="overlay" class="overlay hidden"><div id="ov-ref" class="ov-ref"></div><div id="ov-text" class="ov-text"></div></div>
+  <div id="blackout" class="blackout hidden"></div>
+  <div id="p-connection" class="connection">Connecting</div>
+  <button class="setup-fullscreen" onclick="toggleFullscreen()">Fullscreen</button>
+</div>
+
+<script>
+const ROOM='living-with-purpose-v1';
+const CHANNEL='lwp-sync-v1';
+const view=(new URLSearchParams(location.search).get('view')||'remote').toLowerCase();
+let bc=null,sbClient=null,sbChannel=null,sbUrl='',sbKey='';
+let state={room:ROOM,started:false,slide:0,overlay:null,black:false,ts:Date.now()};
+
+const SLIDES=[
+{type:'cover',title:'Living With Purpose',sub:"Seeking God's Best in Every Stage of Life",ref:'Matthew 6:33',notes:'Open the room. The lesson is about living purposefully in the stage God has you in now.'},
+{type:'verse',kicker:'Anchor Text',ref:'Matthew 6:33',text:'But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.',notes:'Read the anchor text slowly. Emphasize FIRST.'},
+{type:'statement',kicker:'Big Idea',text:'Purpose is not something you enter when your circumstances change.',sub:'Purpose is how you live while seeking God first in the stage He has you in now.',notes:'Set the thesis. Purpose is present-tense, not postponed until marriage, career, money, or another answered prayer.'},
+{type:'progression',kicker:'Today\'s Progression',words:['SEEK','ASK','KNOCK','CALL','TRUST'],sub:'Trust God with “all these things.”',notes:'Give them the map before the lesson begins.'},
+{type:'prompt',kicker:'Icebreaker · Round One',text:'If you could ask God for one thing concerning your present stage of life, what would it be?',sub:'Keep the answers short. Serious or light is fine.',notes:'Put a microphone in the room. Collect answers without responding to every one.'},
+{type:'prompt',kicker:'Icebreaker · Round Two',text:'What are you waiting on God for right now?',sub:'Everybody is waiting for something.',notes:'Let this expose the common experience of waiting.'},
+{type:'statement',kicker:'Transition',text:'Different ages. Different situations. Different desires. Same starting point:',sub:'SEEK FIRST THE KINGDOM OF GOD.',notes:'Transition directly from the room answers into Matthew 6:33.'},
+{type:'statement',kicker:'Introduction',text:'Stop treating your current stage like a waiting room.',notes:'Name the danger: “My real life starts when...” Marriage, career, house, more money, answered prayer, or this season ending.'},
+{type:'verse',ref:'Ecclesiastes 3:1',text:'To every thing there is a season, and a time to every purpose under the heaven.',sub:'There is purpose in the season, not merely purpose after the season.',notes:'Scripture never teaches us to postpone purpose.'},
+{type:'verse',ref:'Philippians 4:11',text:'For I have learned, in whatsoever state I am, therewith to be content.',sub:'Contentment does not mean you stop desiring. It means your joy, obedience, identity, and usefulness to God are not suspended.',notes:'You can desire change without despising the stage you are in.'},
+{type:'section',kicker:'01',title:'SEEK',sub:'What are you looking for?',ref:'Matthew 6:33',notes:'Begin the SEEK section.'},
+{type:'statement',kicker:'Order Matters',text:'Jesus did not merely say seek. He said seek Him FIRST.',sub:'Everybody seeks something. The issue is order.',notes:'Marriage, money, security, recognition, success, friendship, approval, comfort, purpose. Good things become dangerous when they take first place.'},
+{type:'points',kicker:'To Seek',title:'Intentional pursuit because I consider something valuable.',points:['Attention','Desire','Movement','Priority','Persistence'],notes:'Seeking is not accidental. It has movement and priority.'},
+{type:'points',kicker:'Seek the Lord',title:'Scripture keeps repeating the command.',points:['Deuteronomy 4:29 · with all thy heart and soul','1 Chronicles 16:11 · continually','Psalm 27:8 · Thy face, LORD, will I seek','Psalm 34:10 · shall not want any good thing','Isaiah 55:6 · while he may be found','Jeremiah 29:13 · with all your heart'],notes:'You do not have to read every verse here. Use the Scripture Bank if you want any one of them full screen.'},
+{type:'points',kicker:'How Do We Seek God?',title:'Start with what God has already given you.',points:['Prayer · “God, I want You.”','His Word · Has God already spoken?','Obedience · Sometimes you already know the next right thing.'],notes:'Some people want revelation when what they need is obedience.'},
+{type:'points',kicker:'How Do We Seek God?',title:'Govern appetite. Receive counsel. Serve.',points:['Fasting · appetites may speak, but they do not rule','Godly counsel · people who know God, Scripture, and you','Serving · purpose often becomes clearer while moving'],notes:'For singles, legitimate desires can become controlling desires. Fasting puts desire back under government.'},
+{type:'prompt',kicker:'Discussion',text:'What competes most aggressively with seeking God first?',sub:'How can you tell when a legitimate desire has moved into first place?',notes:'Possible answer: when your peace depends upon receiving it. This leads into ASK.'},
+{type:'section',kicker:'02',title:'ASK',sub:'Bring your desires to God.',ref:'Matthew 7:7',notes:'Christian maturity does not mean pretending you do not want anything.'},
+{type:'verse',ref:'Matthew 7:7',text:'Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you:',sub:'God invites us to ask.',notes:'Want marriage? Direction? Wisdom? Ministry opportunity? Provision? Restoration? Ask.'},
+{type:'points',kicker:'How Do We Ask?',title:'Bring the real request.',points:['Ask specifically','Ask according to His will','Ask with faith','Ask with the right motives'],notes:'Prayer is not “God, approve my plan.” It is “Here is what I desire, but I trust Your wisdom more than mine.”'},
+{type:'prompt',kicker:'Motive Check',text:'Why do I want what I am asking God for?',sub:'A request can be good while the motive still needs purification.',notes:'Use marriage as the example: companionship, sex, social pressure, fear, image, family expectation, or covenant/service/partnership?'},
+{type:'statement',kicker:'Important Principle',text:'God can answer the prayer by changing the situation.',sub:'Sometimes God answers the prayer by changing the person who prayed it.',notes:'Let this sit before moving to KNOCK.'},
+{type:'section',kicker:'03',title:'KNOCK',sub:'Walk toward the doors you are praying about.',ref:'Matthew 7:7',notes:'Knocking introduces movement. You reached a door because you moved.'},
+{type:'points',kicker:'Active Waiting',title:'Prayer is not an excuse for passivity.',points:['Employment · are you applying?','Financial stability · are you budgeting?','Friendship · are you becoming relational?','Marriage · are you becoming capable of building one?','Ministry · are you serving where there is already a need?','Knowledge · are you studying?'],notes:'Challenge spiritualized passivity.'},
+{type:'points',kicker:'Principles for Open Doors',title:'An opportunity is not automatically permission.',points:['Not every open door is from God','Not every closed door is rejection','Do not force a door God has closed','Do not fear a door God opens','Let Scripture govern every door'],notes:'Jonah found a ship going exactly where he wanted. Availability does not equal divine permission.'},
+{type:'prompt',kicker:'Ask the Room',text:'What is the difference between waiting on God and procrastinating?',sub:'Waiting on God is active obedience without forcing the outcome.',notes:'Let them answer first.'},
+{type:'section',kicker:'04',title:'CALL',sub:'When you need God to answer.',ref:'Jeremiah 33:3',notes:'Call is not the fourth word in Matthew 7:7, but it fits the biblical progression.'},
+{type:'verse',ref:'Jeremiah 33:3',text:'Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.',notes:'There are moments where you are not merely seeking direction. You are crying out.'},
+{type:'points',kicker:'Call on God',title:'Stop carrying everything internally.',points:['When you are lonely · Call','When you do not understand · Call','When you are afraid · Call','When temptation is strong · Call','When you made a mess · Call','When you need God above everybody else\'s advice · Call'],notes:'Prayer should be the reflex of a life that knows where its help comes from.'},
+{type:'progression',kicker:'Put It Together',words:['SEEK','ASK','KNOCK','CALL'],sub:'Then comes something harder: TRUST.',notes:'Seek: God, what do You want? Ask: this is what I desire. Knock: I will move when You open the way. Call: I need You. None of those gives you control over the answer.'},
+{type:'section',kicker:'05',title:'ALL THESE THINGS',sub:'What was Jesus actually promising?',ref:'Matthew 6:31-33',notes:'Return to the anchor text and make them identify the context.'},
+{type:'verse',ref:'Matthew 6:31-33',text:'Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed? ... But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.',sub:'Your heavenly Father knoweth that ye have need of all these things.',notes:'The context defines “all these things”: needs, not a guarantee of every imagined life outcome.'},
+{type:'statement',kicker:'Read the Context',text:'“All these things” does NOT mean:',sub:'Put God first and He guarantees the spouse, house, career, income, children, and lifestyle you imagined.',notes:'Do not turn Matthew 6:33 into a prosperity formula.'},
+{type:'statement',kicker:'The Promise Is Better',text:'You take care of My kingdom.',sub:'Trust Me with your needs.',notes:'Before you ask, explain, panic, or compare, your Father knows.'},
+{type:'statement',kicker:'God Knows What You Need',text:'The answer to anxiety is not “everything will happen when I want.”',sub:'The answer is: MY FATHER KNOWS.',notes:'Land Matthew 6:32 here.'},
+{type:'statement',kicker:'God\'s Best',text:'God\'s best is not necessarily getting everything you imagined.',sub:'It is becoming everything He has called you to become while receiving whatever He knows is good for you.',notes:'This is where the lesson title lands.'},
+{type:'verse',ref:'Psalm 84:11',text:'For the LORD God is a sun and shield: the LORD will give grace and glory: no good thing will he withhold from them that walk uprightly.',sub:'If He withholds it: it may not be good for me, not good for me yet, or there is a purpose I cannot currently see.',notes:'This requires trust, not control.'},
+{type:'section',kicker:'Singles Application',title:'DON\'T WASTE THE STAGE YOU\'RE IN',sub:'Every stage has opportunities unique to that stage.',ref:'1 Corinthians 7:32',notes:'Marriage is not inferior or superior. Each stage carries distinct opportunities and responsibilities.'},
+{type:'verse',ref:'1 Corinthians 7:32',text:'He that is unmarried careth for the things that belong to the Lord, how he may please the Lord:',sub:'Do not spend this stage staring at the next one.',notes:'Ask what can be built now.'},
+{type:'points',kicker:'Build Now',title:'What can this stage produce?',points:['Spiritually · relationship with God','Financially · habits and stewardship','Emotionally · address wounds, fears, insecurities, patterns','Relationally · become a better friend, sibling, church member, mentor','Physically · steward your body','Professionally · learn and build','Ministerially · serve somebody now'],notes:'Purpose is practical. Build what is available to build now.'},
+{type:'statement',kicker:'For Those Desiring Marriage',text:'Do not just seek the right person.',sub:'BECOME THE RIGHT PERSON.',notes:'Shift the prayer from “Where are they?” to “What are You developing in me?”'},
+{type:'points',kicker:'You Bring Yourself Into Marriage',title:'Marriage does not magically create:',points:['Discipline','Character','Communication','Financial wisdom','Emotional maturity','Purity','Patience','Spiritual depth'],notes:'Build the person now.'},
+{type:'prompt',kicker:'Final Exercise',text:'SEEK · What is God asking me to pursue more intentionally?',sub:'ASK · What desire do I need to honestly place before God?',notes:'Have everyone use phone or paper. These answers are private.'},
+{type:'prompt',kicker:'Final Exercise',text:'KNOCK · What action have I been praying about that I now need to take?',sub:'CALL · What burden do I need to cry out to God about?',notes:'Give them time to write.'},
+{type:'prompt',kicker:'Final Exercise',text:'TRUST · What outcome do I need to release back into God\'s hands?',notes:'This is the final and hardest question.'},
+{type:'verse',kicker:'Closing',ref:'Matthew 6:33',text:'But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.',notes:'Return one final time to the anchor text.'},
+{type:'statement',kicker:'Live With Purpose Now',text:'Seek now. Ask now. Knock now. Call now. Trust now.',sub:'Serve. Build. Grow. Pray. Learn. Give. Love. Obey.',notes:'Do not live saying “I will have purpose when...”'},
+{type:'statement',kicker:'Final Line',text:'Your current stage is not the hallway leading to your life.',sub:'THIS IS YOUR LIFE. And if you seek the kingdom first, no stage of it has to be wasted.',notes:'End here. Let it breathe.'}
+];
+
+const VERSES=[
+['Matthew 6:33','But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.'],
+['Ecclesiastes 3:1','To every thing there is a season, and a time to every purpose under the heaven.'],
+['Philippians 4:11','For I have learned, in whatsoever state I am, therewith to be content.'],
+['Deuteronomy 4:29','But if from thence thou shalt seek the LORD thy God, thou shalt find him, if thou seek him with all thy heart and with all thy soul.'],
+['1 Chronicles 16:11','Seek the LORD and his strength, seek his face continually.'],
+['Psalm 27:8','When thou saidst, Seek ye my face; my heart said unto thee, Thy face, LORD, will I seek.'],
+['Psalm 34:10','The young lions do lack, and suffer hunger: but they that seek the LORD shall not want any good thing.'],
+['Psalm 63:1','O God, thou art my God; early will I seek thee: my soul thirsteth for thee, my flesh longeth for thee in a dry and thirsty land, where no water is;'],
+['Proverbs 8:17','I love them that love me; and those that seek me early shall find me.'],
+['Isaiah 55:6','Seek ye the LORD while he may be found, call ye upon him while he is near:'],
+['Jeremiah 29:13','And ye shall seek me, and find me, when ye shall search for me with all your heart.'],
+['Psalm 119:105','Thy word is a lamp unto my feet, and a light unto my path.'],
+['Proverbs 11:14','Where no counsel is, the people fall: but in the multitude of counsellors there is safety.'],
+['Matthew 7:7','Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you:'],
+['Philippians 4:6','Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.'],
+['1 John 5:14','And this is the confidence that we have in him, that, if we ask any thing according to his will, he heareth us:'],
+['James 4:3','Ye ask, and receive not, because ye ask amiss, that ye may consume it upon your lusts.'],
+['Jeremiah 33:3','Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.'],
+['Psalm 50:15','And call upon me in the day of trouble: I will deliver thee, and thou shalt glorify me.'],
+['Psalm 145:18','The LORD is nigh unto all them that call upon him, to all that call upon him in truth.'],
+['Romans 10:13','For whosoever shall call upon the name of the Lord shall be saved.'],
+['Psalm 121:1-2','I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.'],
+['Matthew 6:31-32','Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed? (For after all these things do the Gentiles seek:) for your heavenly Father knoweth that ye have need of all these things.'],
+['Psalm 84:11','For the LORD God is a sun and shield: the LORD will give grace and glory: no good thing will he withhold from them that walk uprightly.'],
+['1 Corinthians 7:32','But I would have you without carefulness. He that is unmarried careth for the things that belong to the Lord, how he may please the Lord:']
+];
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function slideName(s){return s.title||s.ref||s.text||s.words?.join(' → ')||'Slide';}
+function renderSlide(s){
+  const kicker=s.kicker?`<div class="p-kicker">${esc(s.kicker)}</div>`:'';
+  const sub=s.sub?`<div class="p-sub">${esc(s.sub)}</div>`:'';
+  const ref=s.ref?`<div class="p-ref">${esc(s.ref)}</div>`:'';
+  if(s.type==='cover') return `${kicker}<div class="p-title">${esc(s.title)}</div><div class="rule"></div>${sub}${ref}`;
+  if(s.type==='section') return `${kicker}<div class="p-title">${esc(s.title)}</div>${sub}${ref}`;
+  if(s.type==='verse') return `${kicker}${ref}<div class="rule"></div><div class="p-verse">${esc(s.text)}</div>${sub}`;
+  if(s.type==='statement') return `${kicker}<div class="statement">${esc(s.text)}</div>${sub}${ref}`;
+  if(s.type==='prompt') return `${kicker}<div class="p-title medium">${esc(s.text)}</div>${sub}`;
+  if(s.type==='points') return `${kicker}<div class="p-title medium">${esc(s.title)}</div><ul class="points">${s.points.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>${sub}${ref}`;
+  if(s.type==='progression') return `${kicker}<div class="progression">${s.words.map((w,i)=>`${i?'<span class="arrow">→</span>':''}<span class="prog">${esc(w)}</span>`).join('')}</div>${sub}`;
+  return `<div class="p-title medium">${esc(slideName(s))}</div>`;
+}
+function setRemoteCue(){
+  const s=SLIDES[state.slide];
+  document.getElementById('now-num').textContent=state.started?String(state.slide+1).padStart(2,'0'):'00';
+  document.getElementById('now-title').textContent=state.started?slideName(s):'Standby';
+  document.getElementById('now-type').textContent=state.started?s.type:'Not started';
+  document.getElementById('now-notes').textContent=state.started?(s.notes||''):'Projector is isolated from The Ministry / Kingdom Principles. Tap Start when you are ready.';
+  const next=state.started?SLIDES[state.slide+1]:SLIDES[0];
+  document.getElementById('next-cue').innerHTML=`<strong>Next</strong>${esc(next?slideName(next):'End')}`;
+  document.getElementById('next-btn').textContent=!state.started?'Start':state.slide>=SLIDES.length-1?'End':'Next →';
+  document.getElementById('black-btn').classList.toggle('on',state.black);
+  document.querySelectorAll('.slide-item').forEach((el,i)=>el.classList.toggle('on',state.started&&i===state.slide));
+}
+function setProjector(){
+  const p=document.getElementById('projector');
+  document.getElementById('standby').classList.toggle('hidden',state.started);
+  p.classList.toggle('live',state.started);
+  if(state.started) document.getElementById('stage-inner').innerHTML=renderSlide(SLIDES[state.slide]);
+  const ov=document.getElementById('overlay');
+  if(state.overlay){document.getElementById('ov-ref').textContent=state.overlay.ref;document.getElementById('ov-text').textContent=state.overlay.text;ov.classList.remove('hidden');}else ov.classList.add('hidden');
+  document.getElementById('blackout').classList.toggle('hidden',!state.black);
+}
+function applyState(next){if(!next||next.room!==ROOM)return;state={...state,...next};if(view==='remote')setRemoteCue();else setProjector();}
+function payload(){return {...state,room:ROOM,ts:Date.now()};}
+function send(){state.ts=Date.now();const msg={type:'lwp_state',room:ROOM,state:payload()};try{if(!bc)bc=new BroadcastChannel(CHANNEL);bc.postMessage(msg)}catch(e){};sendNetwork(msg);if(view==='remote')setRemoteCue();}
+async function sendNetwork(msg){if(!sbUrl||!sbKey)return;try{await fetch(sbUrl+'/rest/v1/sync_state',{method:'POST',headers:{'Content-Type':'application/json','apikey':sbKey,'Authorization':'Bearer '+sbKey,'Prefer':'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({id:1,payload:JSON.stringify(msg),updated_at:new Date().toISOString()})})}catch(e){setStatus(false,'Local only')}}
+function handle(msg){if(!msg||msg.type!=='lwp_state'||msg.room!==ROOM||!msg.state)return;applyState(msg.state)}
+function startLocal(){try{bc=new BroadcastChannel(CHANNEL);bc.onmessage=e=>handle(e.data)}catch(e){}}
+async function initNetwork(){
+  try{const r=await fetch('/api/config',{cache:'no-store'});const cfg=await r.json();sbUrl=cfg.supabaseUrl||'';sbKey=cfg.supabaseAnonKey||'';}catch(e){}
+  if(!sbUrl||!sbKey){setStatus(false,'Local only');return;}
+  const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';script.onload=()=>{
+    try{sbClient=window.supabase.createClient(sbUrl,sbKey);sbChannel=sbClient.channel('living-with-purpose-room').on('postgres_changes',{event:'*',schema:'public',table:'sync_state'},p=>{try{const row=p.new||{};const msg=typeof row.payload==='string'?JSON.parse(row.payload):row.payload;handle(msg)}catch(e){}}).subscribe(status=>{if(status==='SUBSCRIBED')setStatus(true,'Live sync');if(status==='CHANNEL_ERROR'||status==='TIMED_OUT')setStatus(false,'Sync error')});}catch(e){setStatus(false,'Sync error')}
+  };script.onerror=()=>setStatus(false,'Local only');document.head.appendChild(script);
+}
+function setStatus(live,label){const d=document.getElementById(view==='remote'?'r-dot':'p-connection');if(view==='remote'){document.getElementById('r-status').textContent=label;d?.classList.toggle('live',live)}else{d.textContent=label;d.classList.toggle('live',live)}}
+function goTo(i){i=Math.max(0,Math.min(i,SLIDES.length-1));state.started=true;state.slide=i;state.overlay=null;state.black=false;send()}
+function nextSlide(){if(!state.started){goTo(0);return}if(state.slide<SLIDES.length-1)goTo(state.slide+1)}
+function prevSlide(){if(!state.started)return;if(state.slide>0)goTo(state.slide-1);else{state.started=false;state.overlay=null;send()}}
+function pushVerse(i){const [ref,text]=VERSES[i];state.overlay={ref,text};state.black=false;send()}
+function clearOverlay(){state.overlay=null;send()}
+function toggleBlack(){state.black=!state.black;send()}
+function toggleFullscreen(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});else document.exitFullscreen?.()}
+function buildRemote(){
+  document.getElementById('slide-list').innerHTML=SLIDES.map((s,i)=>`<button class="slide-item" onclick="goTo(${i})"><span class="si-num">${String(i+1).padStart(2,'0')}</span><span><span class="si-type">${esc(s.type)}</span><span class="si-title">${esc(slideName(s))}</span></span></button>`).join('');
+  document.getElementById('verse-list').innerHTML=VERSES.map((v,i)=>`<div class="verse"><div class="v-ref">${esc(v[0])}</div><div class="v-text">${esc(v[1])}</div><button class="btn small" onclick="pushVerse(${i})">Push to Main</button></div>`).join('');
+  try{const saved=JSON.parse(localStorage.getItem('lwp_remote_state')||'null');if(saved&&saved.room===ROOM)state={...state,...saved}}catch(e){}
+  setRemoteCue();setInterval(()=>{try{localStorage.setItem('lwp_remote_state',JSON.stringify(state))}catch(e){}},1000);
+}
+function init(){
+  if(view==='projector'){document.getElementById('projector').classList.remove('hidden');document.body.style.overflow='hidden';setProjector()}else{document.getElementById('remote').classList.remove('hidden');buildRemote()}
+  startLocal();initNetwork();
+}
+init();
+</script>
+</body>
+</html>
