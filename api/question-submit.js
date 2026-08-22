@@ -10,6 +10,15 @@ function hashEmail(email) {
   const e = normalizeEmail(email);
   return e ? crypto.createHash('sha256').update(e).digest('hex') : null;
 }
+async function fetchWithTimeout(url, opts = {}, timeoutMs = 5500) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...opts, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
@@ -40,7 +49,7 @@ export default async function handler(req, res) {
   };
 
   try {
-    const r = await fetch(`${SB_URL}/rest/v1/lesson_questions`, {
+    const r = await fetchWithTimeout(`${SB_URL}/rest/v1/lesson_questions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,13 +60,10 @@ export default async function handler(req, res) {
       body: JSON.stringify(payload)
     });
 
-    if (!r.ok) {
-      const details = await r.text().catch(() => '');
-      return res.status(500).json({ error: 'Question save failed', details, payload_keys: Object.keys(payload) });
-    }
-
+    if (!r.ok) return res.status(502).json({ error: 'Question save failed. Please try again.' });
     return res.status(200).json({ ok: true, saved: true });
   } catch (e) {
-    return res.status(500).json({ error: e.message });
+    if (e?.name === 'AbortError') return res.status(504).json({ error: 'Question save timed out. Please try again.' });
+    return res.status(500).json({ error: 'Question save unavailable. Please try again.' });
   }
 }
