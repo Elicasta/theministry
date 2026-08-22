@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Living With Purpose · Student Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d0f;--panel:#11151a;--panel2:#171c22;--ink:#f4efe5;--muted:#87919b;--line:#28313a;--gold:#c6a46a;--sage:#91a69a;--green:#43c987;--red:#d46e63;--fd:'Bebas Neue',Impact,sans-serif;--fc:'Barlow Condensed','Arial Narrow',sans-serif;--fb:'Barlow',Arial,sans-serif;--fp:'Playfair Display',Georgia,serif}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--fb)}button,input,textarea{font:inherit}.hidden{display:none!important}
+body{background:radial-gradient(circle at 85% 3%,rgba(145,166,154,.08),transparent 28%),linear-gradient(180deg,#0a0c0e,#0d1115 55%,#0a0c0e)}
+.top{position:sticky;top:0;z-index:20;height:58px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,12,14,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-family:var(--fd);font-size:1.15rem;letter-spacing:.06em}.brand span{color:var(--gold)}.live{display:flex;align-items:center;gap:7px;font-family:var(--fc);font-size:.58rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.dot{width:7px;height:7px;border-radius:50%;background:#4a525a}.dot.on{background:var(--green);box-shadow:0 0 10px rgba(67,201,135,.45)}
+.shell{width:min(760px,100%);margin:0 auto;padding:15px 12px 80px}.card{border:1px solid var(--line);background:rgba(17,21,26,.94);border-radius:15px;padding:16px;margin-bottom:10px}.ey{font-family:var(--fc);font-size:.56rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}.title{font-family:var(--fd);font-size:clamp(2.1rem,9vw,4.5rem);line-height:.88;text-transform:uppercase}.sub{font-family:var(--fp);font-size:.95rem;line-height:1.5;color:#b8b3aa;margin-top:10px}.ref{font-family:var(--fc);font-size:.68rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);margin-top:11px}.body{font-size:.95rem;line-height:1.55;color:#d5d8da;margin-top:10px}.points{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}.points li{border-left:2px solid var(--gold);padding:7px 9px;background:#0c1014;font-size:.9rem;line-height:1.35}
+.path{display:flex;gap:5px;overflow:auto;padding-bottom:2px}.path span{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-family:var(--fc);font-size:.55rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#66717b}.path span.on{color:#16130e;background:var(--gold);border-color:var(--gold)}
+.prompt{border-color:rgba(198,164,106,.55);box-shadow:0 12px 36px rgba(0,0,0,.18)}.prompt-q{font-family:var(--fc);font-size:1.25rem;font-weight:800;line-height:1.08}.hint{font-size:.78rem;color:var(--muted);margin:7px 0 10px}.ta,.email{width:100%;border:1px solid var(--line);border-radius:10px;background:#0a0d10;color:var(--ink);padding:12px;outline:none}.ta{min-height:105px;resize:vertical;line-height:1.45}.email:focus,.ta:focus{border-color:var(--gold)}.actions{display:flex;gap:8px;align-items:center;margin-top:9px}.btn{border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--ink);padding:10px 12px;font-family:var(--fc);font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;cursor:pointer}.btn.primary{background:var(--gold);border-color:var(--gold);color:#17130c}.btn.ghost{background:transparent}.save-state{font-family:var(--fc);font-size:.58rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.save-state.ok{color:var(--green)}.save-state.err{color:#ff988e}
+.progress-row{display:flex;justify-content:space-between;gap:12px;align-items:center}.progress-label{font-family:var(--fc);font-weight:800}.progress-num{font-family:var(--fd);font-size:1.5rem;color:var(--gold)}.bar{height:5px;background:#20272e;margin-top:9px;overflow:hidden;border-radius:99px}.bar div{height:100%;width:0;background:var(--gold);transition:width .2s}
+details{border:1px solid var(--line);border-radius:15px;background:#0d1115;margin-bottom:10px;overflow:hidden}summary{list-style:none;padding:14px 15px;font-family:var(--fc);font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#aab0b5;cursor:pointer;display:flex;justify-content:space-between}summary::-webkit-details-marker{display:none}summary:after{content:'+';color:var(--gold)}details[open] summary:after{content:'−'}.details-body{padding:0 10px 10px}.mini-q{border-top:1px solid var(--line);padding:11px 4px}.mini-q:first-child{border-top:0}.mini-q-title{font-family:var(--fc);font-weight:800;font-size:.88rem}.mini-q-state{font-size:.65rem;color:var(--muted);margin-top:4px}
+.ask{border-color:rgba(145,166,154,.42)}.ask .ey{color:var(--sage)}.privacy{font-size:.72rem;color:#6f7881;line-height:1.4;margin-top:8px}
+.gate{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 70% 15%,rgba(198,164,106,.1),transparent 32%),#090b0d;display:flex;align-items:center;justify-content:center;padding:18px}.gate-box{width:min(470px,100%);border:1px solid var(--line);background:#101419;border-radius:18px;padding:24px}.gate-title{font-family:var(--fd);font-size:3.2rem;line-height:.85;text-transform:uppercase}.gate-title span{color:var(--gold)}.gate-copy{font-size:.9rem;line-height:1.5;color:#aeb4b9;margin:15px 0}.gate-error{font-size:.75rem;color:#ff9a91;margin-top:8px}.small-note{font-size:.68rem;color:#66707a;line-height:1.4;margin-top:10px}.footer{text-align:center;font-family:var(--fc);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#4d555d;padding-top:12px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;z-index:200;background:#171c21;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-family:var(--fc);font-size:.65rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;transition:.2s}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="ey">Singles Bible Lesson</div>
+    <div class="gate-title">Living <span>With Purpose</span></div>
+    <div class="gate-copy">Follow the lesson live, answer the questions on your phone, and send an anonymous question at any point.</div>
+    <label class="ey" for="email">Your email</label>
+    <input class="email" id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+    <button class="btn primary" style="width:100%;margin-top:9px" onclick="enterPortal()">Enter Lesson</button>
+    <div class="gate-error hidden" id="gate-error"></div>
+    <div class="small-note">Your email is used to identify your participation responses. Anonymous questions are submitted without your email attached.</div>
+  </div>
+</div>
+
+<header class="top"><div class="brand">Living <span>With Purpose</span></div><div class="live"><span id="dot" class="dot"></span><span id="sync-label">Connecting</span></div></header>
+<main class="shell">
+  <section class="card">
+    <div class="ey">Today's Path</div>
+    <div class="path" id="path"><span data-p="OPEN">Start</span><span data-p="SEEK">Seek</span><span data-p="ASK">Ask</span><span data-p="KNOCK">Knock</span><span data-p="CALL">Call</span><span data-p="TRUST">Trust</span></div>
+  </section>
+
+  <section class="card" id="live-card">
+    <div class="ey" id="live-ey">Waiting for lesson</div>
+    <div class="title" id="live-title">Living With Purpose</div>
+    <div class="sub" id="live-sub">Seeking God's Best in Every Stage of Life</div>
+    <div class="ref" id="live-ref">Matthew 6:33</div>
+    <div class="body" id="live-body">The lesson will follow here as the presenter advances the main screen.</div>
+    <ul class="points hidden" id="live-points"></ul>
+  </section>
+
+  <section id="prompt-zone"></section>
+
+  <section class="card">
+    <div class="progress-row"><div><div class="ey">Participation</div><div class="progress-label">Your responses</div></div><div class="progress-num" id="progress-num">0/11</div></div>
+    <div class="bar"><div id="progress-bar"></div></div>
+  </section>
+
+  <details>
+    <summary>All lesson questions</summary>
+    <div class="details-body" id="all-prompts"></div>
+  </details>
+
+  <section class="card ask">
+    <div class="ey">Anonymous Ask a Question</div>
+    <div class="prompt-q">Have a question about the lesson?</div>
+    <div class="hint">Send it at any point. Your email is not included with this question.</div>
+    <textarea class="ta" id="ask-text" placeholder="Type your question..."></textarea>
+    <div class="actions"><button class="btn" onclick="submitAnonymousQuestion()">Send anonymously</button><span class="save-state" id="ask-state"></span></div>
+    <div class="privacy">Anonymous questions are stored separately from your participation responses.</div>
+  </section>
+
+  <div class="footer">Living With Purpose · Matthew 6:33 · Student Portal</div>
+</main>
+<div class="toast" id="toast">Saved</div>
+
+<script>
+const ROOM='living-with-purpose-v1';
+const CHANNEL='lwp-sync-v1';
+const SERIES='living-with-purpose';
+const LESSON='singles-2026-08-22';
+let email='';
+let sessionId=localStorage.getItem('lwp_student_session')||('lwp_'+(crypto.randomUUID?crypto.randomUUID():Date.now()+Math.random().toString(16).slice(2)));
+localStorage.setItem('lwp_student_session',sessionId);
+let bc=null,sbClient=null,sbChannel=null,sbUrl='',sbKey='';
+let liveState={room:ROOM,started:false,slide:0};
+
+const FOLLOW=[
+{p:'OPEN',ey:'Living With Purpose',title:'Living With Purpose',sub:"Seeking God's Best in Every Stage of Life",ref:'Matthew 6:33',body:'Purpose is how you live while seeking God first in the stage He has you in now.'},
+{p:'OPEN',ey:'Anchor Text',title:'Seek First',ref:'Matthew 6:33',body:'But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.'},
+{p:'OPEN',ey:'Big Idea',title:'Purpose Is Present-Tense',body:'Purpose is not something you enter when your circumstances change.',sub:'Live purposefully in the stage God has you in now.'},
+{p:'OPEN',ey:"Today's Progression",title:'SEEK → ASK → KNOCK → CALL → TRUST',body:'We pursue God first, bring Him our desires, move in obedience, call on Him, and release the outcome.'},
+{p:'OPEN',ey:'Icebreaker · Round One',title:'What would you ask God for?',body:'Think about your present stage of life. What one thing would you ask God for?'},
+{p:'OPEN',ey:'Icebreaker · Round Two',title:'What are you waiting on God for?',body:'Everybody is waiting for something.'},
+{p:'OPEN',ey:'Transition',title:'Same Starting Point',body:'Different ages. Different situations. Different desires. Seek first the kingdom of God.'},
+{p:'OPEN',ey:'Introduction',title:'Your Current Stage Is Not a Waiting Room',body:'Do not postpone purpose until marriage, a career, a house, more money, or another answered prayer.'},
+{p:'OPEN',ey:'Scripture',title:'There Is Purpose in the Season',ref:'Ecclesiastes 3:1',body:'To every thing there is a season, and a time to every purpose under the heaven.'},
+{p:'OPEN',ey:'Scripture',title:'Contentment Is Learned',ref:'Philippians 4:11',body:'Your joy, obedience, identity, and usefulness to God do not have to be suspended while you desire something more.'},
+{p:'SEEK',ey:'01 · SEEK',title:'What Are You Looking For?',ref:'Matthew 6:33',body:'Seeking God first is about order.'},
+{p:'SEEK',ey:'Order Matters',title:'Seek Him FIRST',body:'Everybody seeks something. The issue is what occupies first place.'},
+{p:'SEEK',ey:'To Seek',title:'Intentional Pursuit',points:['Attention','Desire','Movement','Priority','Persistence']},
+{p:'SEEK',ey:'Seek the Lord',title:'Scripture Repeats the Command',points:['Seek with all your heart','Seek continually','Seek His face','Seek while He may be found']},
+{p:'SEEK',ey:'How Do We Seek God?',title:'Start With What God Has Given You',points:['Prayer','His Word','Obedience']},
+{p:'SEEK',ey:'How Do We Seek God?',title:'Govern Appetite. Receive Counsel. Serve.',points:['Fasting','Godly counsel','Serving']},
+{p:'SEEK',ey:'Discussion',title:'What Competes With God First?',body:'How can you tell when a legitimate desire has moved into first place?'},
+{p:'ASK',ey:'02 · ASK',title:'Bring Your Desires to God',ref:'Matthew 7:7',body:'Christian maturity does not mean pretending you do not want anything.'},
+{p:'ASK',ey:'Scripture',title:'Ask',ref:'Matthew 7:7',body:'Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.'},
+{p:'ASK',ey:'How Do We Ask?',title:'Bring the Real Request',points:['Ask specifically','Ask according to His will','Ask with faith','Ask with the right motives']},
+{p:'ASK',ey:'Motive Check',title:'Why Do I Want What I Am Asking For?',body:'A request can be good while the motive still needs purification.'},
+{p:'ASK',ey:'Important Principle',title:'God May Change the Situation or the Person',body:'Sometimes God answers the prayer by changing the person who prayed it.'},
+{p:'KNOCK',ey:'03 · KNOCK',title:'Walk Toward the Doors You Are Praying About',ref:'Matthew 7:7',body:'Knocking introduces movement.'},
+{p:'KNOCK',ey:'Active Waiting',title:'Prayer Is Not an Excuse for Passivity',points:['Apply','Budget','Become relational','Build maturity','Serve','Study']},
+{p:'KNOCK',ey:'Open Doors',title:'Opportunity Is Not Automatically Permission',points:['Not every open door is from God','Not every closed door is rejection','Do not force a closed door','Do not fear an open door','Let Scripture govern every door']},
+{p:'KNOCK',ey:'Ask the Room',title:'Waiting or Procrastinating?',body:'Waiting on God is active obedience without forcing the outcome.'},
+{p:'CALL',ey:'04 · CALL',title:'When You Need God to Answer',ref:'Jeremiah 33:3',body:'There are moments when you are not merely seeking direction. You are crying out.'},
+{p:'CALL',ey:'Scripture',title:'Call Unto Me',ref:'Jeremiah 33:3',body:'Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.'},
+{p:'CALL',ey:'Call on God',title:'Stop Carrying Everything Internally',points:['When you are lonely · Call','When you do not understand · Call','When you are afraid · Call','When temptation is strong · Call','When you made a mess · Call']},
+{p:'CALL',ey:'Put It Together',title:'SEEK → ASK → KNOCK → CALL',body:'Then comes something harder: trust.'},
+{p:'TRUST',ey:'05 · ALL THESE THINGS',title:'What Was Jesus Actually Promising?',ref:'Matthew 6:31-33',body:'The context tells us what “all these things” means.'},
+{p:'TRUST',ey:'Read the Context',title:'Your Father Knows What You Need',ref:'Matthew 6:31-33',body:'Food, drink, clothing, and needs. Matthew 6:33 is not a guarantee of every imagined life outcome.'},
+{p:'TRUST',ey:'Read the Context',title:'“All These Things” Does Not Mean Everything I Want',body:'Seeking God first is not a prosperity formula.'},
+{p:'TRUST',ey:'The Promise Is Better',title:'You Take Care of My Kingdom',sub:'Trust Me with your needs.'},
+{p:'TRUST',ey:'God Knows What You Need',title:'MY FATHER KNOWS',body:'The answer to anxiety is not control over the timeline. It is confidence that your Father knows.'},
+{p:'TRUST',ey:"God's Best",title:"God's Best May Not Look Like My Plan",body:'God is forming who He has called you to become while giving what He knows is good for you.'},
+{p:'TRUST',ey:'Scripture',title:'No Good Thing Will He Withhold',ref:'Psalm 84:11',body:'Trust God even when what is good, or the timing of it, is not yet clear.'},
+{p:'TRUST',ey:'Singles Application',title:"DON'T WASTE THE STAGE YOU'RE IN",ref:'1 Corinthians 7:32',body:'Every stage carries opportunities unique to that stage.'},
+{p:'TRUST',ey:'Scripture',title:'Use This Stage',ref:'1 Corinthians 7:32',body:'Do not spend this stage staring at the next one.'},
+{p:'TRUST',ey:'Build Now',title:'What Can This Stage Produce?',points:['Spiritually','Financially','Emotionally','Relationally','Physically','Professionally','Ministerially']},
+{p:'TRUST',ey:'For Those Desiring Marriage',title:'Do Not Just Seek the Right Person',sub:'Become the right person.'},
+{p:'TRUST',ey:'Marriage',title:'You Bring Yourself Into Marriage',points:['Discipline','Character','Communication','Financial wisdom','Emotional maturity','Purity','Patience','Spiritual depth']},
+{p:'TRUST',ey:'Final Exercise',title:'SEEK + ASK',body:'What should you pursue more intentionally? What desire should you honestly place before God?'},
+{p:'TRUST',ey:'Final Exercise',title:'KNOCK + CALL',body:'What action should you take? What burden should you cry out to God about?'},
+{p:'TRUST',ey:'Final Exercise',title:'TRUST',body:"What outcome do you need to release back into God's hands?"},
+{p:'TRUST',ey:'Closing',title:'Seek First',ref:'Matthew 6:33',body:'Seek first the kingdom of God and trust Him with all these things.'},
+{p:'TRUST',ey:'Live With Purpose Now',title:'Seek. Ask. Knock. Call. Trust.',body:'Serve. Build. Grow. Pray. Learn. Give. Love. Obey.'},
+{p:'TRUST',ey:'Final Line',title:'THIS IS YOUR LIFE',body:'Your current stage is not the hallway leading to your life. If you seek the kingdom first, no stage has to be wasted.'}
+];
+
+const PROMPTS=[
+{id:'icebreaker-ask',slide:4,q:'If you could ask God for one thing concerning your present stage of life, what would it be?',hint:'Keep it simple and honest.'},
+{id:'icebreaker-waiting',slide:5,q:'What are you waiting on God for right now?',hint:'Everybody is waiting for something.'},
+{id:'seek-competition',slide:16,q:'What competes most aggressively with seeking God first in your life?',hint:'Think about legitimate desires too, not only obviously sinful things.'},
+{id:'seek-first-place',slide:16,q:'How can you tell when a legitimate desire has moved into first place?',hint:'What happens to your peace when you do not receive it?'},
+{id:'ask-motive',slide:20,q:'Why do you want what you are asking God for?',hint:'Let God examine the motive, not only the request.'},
+{id:'knock-waiting',slide:25,q:'What is the difference between waiting on God and procrastinating in your current situation?',hint:'Where might active obedience be required?'},
+{id:'final-seek',slide:42,q:'SEEK · What is God asking you to pursue more intentionally in this stage?',hint:'Private reflection.'},
+{id:'final-ask',slide:42,q:'ASK · What desire do you need to honestly place before God?',hint:'Private reflection.'},
+{id:'final-knock',slide:43,q:'KNOCK · What action have you been praying about that you now need to take?',hint:'Name the next obedient step.'},
+{id:'final-call',slide:43,q:'CALL · What burden have you been carrying that you need to cry out to God about?',hint:'Private reflection.'},
+{id:'final-trust',slide:44,q:"TRUST · What outcome do you need to release back into God's hands?",hint:'Release the result without abandoning obedience.'}
+];
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v||'').trim());}
+function answerKey(id){return 'lwp_answer_'+id;}
+function savedCount(){return PROMPTS.filter(p=>localStorage.getItem(answerKey(p.id)+'_saved')==='1').length;}
+function toast(text){const el=document.getElementById('toast');el.textContent=text;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1500)}
+function setSync(ok,label){document.getElementById('dot').classList.toggle('on',ok);document.getElementById('sync-label').textContent=label;}
+
+async function enterPortal(){
+  const input=document.getElementById('email');
+  const value=String(input.value||'').trim().toLowerCase();
+  const err=document.getElementById('gate-error');
+  if(!validEmail(value)){err.textContent='Enter a valid email address.';err.classList.remove('hidden');return;}
+  err.classList.add('hidden');
+  try{
+    const r=await fetch('/api/purpose-participation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'checkin',email:value,session_id:sessionId})});
+    const data=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(data.error||'Could not enter lesson');
+    email=value;localStorage.setItem('lwp_student_email',email);document.getElementById('gate').classList.add('hidden');renderAll();
+  }catch(e){err.textContent=e.message||'Could not connect. Try again.';err.classList.remove('hidden');}
+}
+
+function renderLive(){
+  const idx=liveState.started?Math.max(0,Math.min(Number(liveState.slide)||0,FOLLOW.length-1)):0;
+  const f=FOLLOW[idx];
+  document.getElementById('live-ey').textContent=liveState.started?`Slide ${idx+1} · ${f.ey}`:'Waiting for lesson';
+  document.getElementById('live-title').textContent=f.title||'Living With Purpose';
+  const sub=document.getElementById('live-sub');sub.textContent=f.sub||'';sub.classList.toggle('hidden',!f.sub);
+  const ref=document.getElementById('live-ref');ref.textContent=f.ref||'';ref.classList.toggle('hidden',!f.ref);
+  const body=document.getElementById('live-body');body.textContent=f.body||'';body.classList.toggle('hidden',!f.body);
+  const points=document.getElementById('live-points');points.innerHTML=(f.points||[]).map(p=>`<li>${esc(p)}</li>`).join('');points.classList.toggle('hidden',!(f.points&&f.points.length));
+  document.querySelectorAll('#path span').forEach(el=>el.classList.toggle('on',el.dataset.p===f.p));
+  renderLivePrompts(idx);
+}
+
+function promptCard(p,compact=false){
+  const draft=localStorage.getItem(answerKey(p.id))||'';
+  const saved=localStorage.getItem(answerKey(p.id)+'_saved')==='1';
+  if(compact) return `<div class="mini-q"><div class="mini-q-title">${esc(p.q)}</div><div class="mini-q-state">${saved?'Saved response':'Not answered yet'}</div></div>`;
+  return `<section class="card prompt"><div class="ey">Participate</div><div class="prompt-q">${esc(p.q)}</div><div class="hint">${esc(p.hint||'')}</div><textarea class="ta" id="ta-${p.id}" oninput="saveDraft('${p.id}',this.value)" placeholder="Type your response...">${esc(draft)}</textarea><div class="actions"><button class="btn primary" onclick="saveAnswer('${p.id}')">${saved?'Update Response':'Save Response'}</button><span class="save-state ${saved?'ok':''}" id="state-${p.id}">${saved?'Saved':''}</span></div></section>`;
+}
+function renderLivePrompts(slide){
+  const matches=PROMPTS.filter(p=>p.slide===slide);
+  document.getElementById('prompt-zone').innerHTML=matches.map(p=>promptCard(p,false)).join('');
+}
+function renderAll(){
+  renderLive();
+  document.getElementById('all-prompts').innerHTML=PROMPTS.map(p=>promptCard(p,true)).join('');
+  const n=savedCount();document.getElementById('progress-num').textContent=`${n}/${PROMPTS.length}`;document.getElementById('progress-bar').style.width=`${(n/PROMPTS.length)*100}%`;
+}
+function saveDraft(id,value){localStorage.setItem(answerKey(id),value);localStorage.removeItem(answerKey(id)+'_saved');updateProgress();}
+function updateProgress(){const n=savedCount();document.getElementById('progress-num').textContent=`${n}/${PROMPTS.length}`;document.getElementById('progress-bar').style.width=`${(n/PROMPTS.length)*100}%`;}
+async function saveAnswer(id){
+  const p=PROMPTS.find(x=>x.id===id);const ta=document.getElementById('ta-'+id);if(!p||!ta)return;
+  const text=String(ta.value||'').trim();const st=document.getElementById('state-'+id);
+  if(!text){st.textContent='Write a response first';st.className='save-state err';return;}
+  st.textContent='Saving…';st.className='save-state';
+  try{
+    const r=await fetch('/api/purpose-participation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'answer',email,session_id:sessionId,prompt_id:id,prompt:p.q,text})});
+    const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||'Save failed');
+    localStorage.setItem(answerKey(id),text);localStorage.setItem(answerKey(id)+'_saved','1');st.textContent='Saved';st.className='save-state ok';renderAll();toast('Response saved');
+  }catch(e){st.textContent='Could not save';st.className='save-state err';}
+}
+
+async function submitAnonymousQuestion(){
+  const ta=document.getElementById('ask-text');const stateEl=document.getElementById('ask-state');const text=String(ta.value||'').trim();
+  if(!text){stateEl.textContent='Type a question first';stateEl.className='save-state err';return;}
+  stateEl.textContent='Sending…';stateEl.className='save-state';
+  try{
+    const r=await fetch('/api/question-submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:'lwp_q_'+Date.now()+'_'+Math.random().toString(16).slice(2),text,series_slug:SERIES,lesson_slug:LESSON,name:'Anonymous',anonymous:true})});
+    const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||'Send failed');
+    ta.value='';stateEl.textContent='Sent anonymously';stateEl.className='save-state ok';toast('Question sent');setTimeout(()=>{stateEl.textContent='';stateEl.className='save-state'},2500);
+  }catch(e){stateEl.textContent='Could not send';stateEl.className='save-state err';}
+}
+
+function handle(msg){if(!msg||msg.type!=='lwp_state'||msg.room!==ROOM||!msg.state)return;liveState={...liveState,...msg.state};renderLive();}
+function startLocal(){try{bc=new BroadcastChannel(CHANNEL);bc.onmessage=e=>handle(e.data)}catch(e){}}
+async function loadCurrentState(){
+  if(!sbUrl||!sbKey)return;
+  try{
+    const r=await fetch(sbUrl+'/rest/v1/sync_state?id=eq.1&select=payload',{headers:{apikey:sbKey,Authorization:'Bearer '+sbKey}});const rows=await r.json();const raw=rows?.[0]?.payload;const msg=typeof raw==='string'?JSON.parse(raw):raw;handle(msg);
+  }catch(e){}
+}
+async function initNetwork(){
+  try{const r=await fetch('/api/config',{cache:'no-store'});const cfg=await r.json();sbUrl=cfg.supabaseUrl||'';sbKey=cfg.supabaseAnonKey||'';}catch(e){}
+  if(!sbUrl||!sbKey){setSync(false,'Local only');return;}
+  await loadCurrentState();
+  const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';script.onload=()=>{
+    try{sbClient=window.supabase.createClient(sbUrl,sbKey);sbChannel=sbClient.channel('living-with-purpose-students').on('postgres_changes',{event:'*',schema:'public',table:'sync_state'},p=>{try{const raw=p.new?.payload;const msg=typeof raw==='string'?JSON.parse(raw):raw;handle(msg)}catch(e){}}).subscribe(status=>{if(status==='SUBSCRIBED')setSync(true,'Following live');if(status==='CHANNEL_ERROR'||status==='TIMED_OUT')setSync(false,'Sync error')});}catch(e){setSync(false,'Sync error')}
+  };script.onerror=()=>setSync(false,'Local only');document.head.appendChild(script);
+}
+
+function init(){
+  const saved=localStorage.getItem('lwp_student_email')||'';
+  if(saved&&validEmail(saved)){email=saved;document.getElementById('email').value=saved;document.getElementById('gate').classList.add('hidden');fetch('/api/purpose-participation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'checkin',email,session_id:sessionId})}).catch(()=>{});}else document.getElementById('email').value=saved;
+  renderAll();startLocal();initNetwork();
+}
+init();
+</script>
+</body>
+</html>
