@@ -2,7 +2,18 @@ function clean(value, max = 2000) {
   return String(value || '').replace(/\s+/g, ' ').trim().slice(0, max);
 }
 
+async function fetchWithTimeout(url, opts = {}, timeoutMs = 5000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...opts, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
   const SB_URL = process.env.SUPABASE_URL;
@@ -25,16 +36,17 @@ export default async function handler(req, res) {
   if (status) params.set('status', `eq.${status}`);
 
   try {
-    const r = await fetch(`${SB_URL}/rest/v1/lesson_questions?${params.toString()}`, {
+    const r = await fetchWithTimeout(`${SB_URL}/rest/v1/lesson_questions?${params.toString()}`, {
       headers: {
         apikey: SB_KEY,
         Authorization: `Bearer ${SB_KEY}`,
         'Content-Type': 'application/json'
       }
     });
-    if (!r.ok) return res.status(500).json({ error: 'Question fetch failed', details: await r.text().catch(() => '') });
+    if (!r.ok) return res.status(502).json({ error: 'Question fetch failed' });
     return res.status(200).json({ ok: true, questions: await r.json() });
   } catch (e) {
-    return res.status(500).json({ error: e.message });
+    if (e?.name === 'AbortError') return res.status(504).json({ error: 'Question feed timed out' });
+    return res.status(500).json({ error: 'Question feed unavailable' });
   }
 }
