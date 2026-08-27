@@ -11,9 +11,6 @@
 <main class="remote-body">
 <section class="card cue"><div class="ey">Current Projector Cue</div><div class="cue-head"><div><div id="cue-title" class="cue-title">Standby</div><div id="cue-type" class="cue-type">Week 4 · Alignment</div></div><div id="cue-num" class="cue-num">00</div></div><div id="cue-notes" class="notes">The Principle of Alignment · Authority Flows Through Alignment</div><div id="next-cue" class="next-cue"><strong>Next</strong>Title</div></section>
 <div class="controls"><button class="btn" onclick="prevSlide()">← Prev</button><button id="next-btn" class="btn primary" onclick="nextSlide()">Start</button><button id="black-btn" class="btn" onclick="toggleBlack()">Black Screen</button><button class="btn danger" onclick="clearTakeover()">Clear Takeover</button></div>
-<div class="outputs">
-<a class="out-link" target="_blank" href="?view=projector">Main Projector</a><a class="out-link" target="_blank" href="?view=confidence">Confidence</a><a class="out-link" target="_blank" href="?view=scriptures">Scripture</a><a class="out-link" target="_blank" href="?view=obsslides">OBS Slides</a><a class="out-link" target="_blank" href="?view=obslowerthirds">OBS Lower Thirds</a><a class="out-link" target="_blank" href="?view=mobile">Mobile Controller</a>
-</div>
 <details class="panel" open><summary>Slides</summary><div id="slide-list" class="panel-body"></div></details>
 <details class="panel"><summary>Scripture Bank · Push Everywhere</summary><div id="verse-list" class="panel-body"></div></details>
 <details class="panel"><summary><span>Polls</span><span id="poll-badge" class="badge">0</span></summary><div id="poll-list" class="panel-body"></div></details>
@@ -25,4 +22,4 @@
 <div id="scriptures" class="scripture-screen hidden"><div id="scripture-content" class="scripture-inner wait"><div class="p-kicker">Kingdom Principles · Scripture Output</div><div class="p-title">WAITING FOR SCRIPTURE</div><p>Push a verse from the remote</p></div></div>
 <div id="obsslides" class="obs-slide hidden"><div id="obs-slide-inner" class="stage-inner"></div></div>
 <div id="obslowerthirds" class="obs-lower hidden"><div id="lower-box" class="lower-box hidden"><div class="lower-series">Kingdom Principles · Week 4</div><div id="lower-title" class="lower-title"></div><div id="lower-sub" class="lower-sub"></div></div></div>
-<script src="/kp-alignment-data.js"></script><script src="/kp-alignment.js"></script></body></html>
+<script src="/kp-alignment-data.js"></script><script src="/kp-alignment.js"></script><script src="/kp-alignment-remote-cleanup.js"></script></body></html>
