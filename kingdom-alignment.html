@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Kingdom Principles · The Principle of Alignment</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/kp-alignment.css"></head><body>
+<div id="remote" class="remote hidden">
+<header class="top"><div class="brand">KINGDOM <b>PRINCIPLES</b></div><div class="sync"><span id="r-dot" class="dot"></span><span id="r-sync">Connecting</span></div></header>
+<main class="remote-body">
+<section class="card cue"><div class="ey">Current Projector Cue</div><div class="cue-head"><div><div id="cue-title" class="cue-title">Standby</div><div id="cue-type" class="cue-type">Week 4 · Alignment</div></div><div id="cue-num" class="cue-num">00</div></div><div id="cue-notes" class="notes">The Principle of Alignment · Authority Flows Through Alignment</div><div id="next-cue" class="next-cue"><strong>Next</strong>Title</div></section>
+<div class="controls"><button class="btn" onclick="prevSlide()">← Prev</button><button id="next-btn" class="btn primary" onclick="nextSlide()">Start</button><button id="black-btn" class="btn" onclick="toggleBlack()">Black Screen</button><button class="btn danger" onclick="clearTakeover()">Clear Takeover</button></div>
+<div class="outputs">
+<a class="out-link" target="_blank" href="?view=projector">Main Projector</a><a class="out-link" target="_blank" href="?view=confidence">Confidence</a><a class="out-link" target="_blank" href="?view=scriptures">Scripture</a><a class="out-link" target="_blank" href="?view=obsslides">OBS Slides</a><a class="out-link" target="_blank" href="?view=obslowerthirds">OBS Lower Thirds</a><a class="out-link" target="_blank" href="?view=mobile">Mobile Controller</a>
+</div>
+<details class="panel" open><summary>Slides</summary><div id="slide-list" class="panel-body"></div></details>
+<details class="panel"><summary>Scripture Bank · Push Everywhere</summary><div id="verse-list" class="panel-body"></div></details>
+<details class="panel"><summary><span>Polls</span><span id="poll-badge" class="badge">0</span></summary><div id="poll-list" class="panel-body"></div></details>
+<details class="panel"><summary><span>Anonymous Questions</span><span id="q-badge" class="badge">0</span></summary><div class="panel-body"><div id="q-list"></div><div class="panel-tools"><button class="btn small" onclick="loadAudienceData()">Refresh</button></div></div></details>
+<div class="footer">Kingdom Principles · Week 4 · The Principle of Alignment</div>
+</main></div>
+<div id="projector" class="output hidden"><div id="p-stage" class="stage"><div id="p-inner" class="stage-inner"></div></div><div id="p-take" class="takeover hidden"><div id="p-take-inner" class="take-inner"></div></div><div id="p-black" class="black hidden"></div></div>
+<div id="confidence" class="confidence hidden"><div class="conf-top"><div class="conf-brand">KINGDOM <b>PRINCIPLES</b></div><div class="sync"><span class="dot live"></span>CONFIDENCE · WEEK 4</div></div><div class="conf-main"><div class="conf-card conf-current"><div id="conf-k" class="conf-k">Current</div><div id="conf-title" class="conf-title">The Principle of Alignment</div><div id="conf-ref" class="conf-ref">Matthew 8:5-13</div></div><div class="conf-side"><div class="conf-card conf-timer"><div class="conf-k">Session Time</div><div id="conf-time" class="conf-time">00:00</div></div><div class="conf-card conf-next"><div class="conf-k">Next</div><div id="conf-next" class="conf-next-title">Title</div></div></div></div><div class="conf-notes"><div class="conf-k">Presenter Notes</div><div id="conf-notes" class="conf-notes-text">Standby.</div></div></div>
+<div id="scriptures" class="scripture-screen hidden"><div id="scripture-content" class="scripture-inner wait"><div class="p-kicker">Kingdom Principles · Scripture Output</div><div class="p-title">WAITING FOR SCRIPTURE</div><p>Push a verse from the remote</p></div></div>
+<div id="obsslides" class="obs-slide hidden"><div id="obs-slide-inner" class="stage-inner"></div></div>
+<div id="obslowerthirds" class="obs-lower hidden"><div id="lower-box" class="lower-box hidden"><div class="lower-series">Kingdom Principles · Week 4</div><div id="lower-title" class="lower-title"></div><div id="lower-sub" class="lower-sub"></div></div></div>
+<script src="/kp-alignment-data.js"></script><script src="/kp-alignment.js"></script></body></html>
