@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Kingdom Principles · Provision Student</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/alignment-student.css">
+<style>:root{--bg:#11100d;--panel:#181611;--panel2:#201d17;--ink:#f5efe3;--muted:#958d80;--line:#373229;--gold:#c8a66a;--sage:#a4ad91}body{background:radial-gradient(circle at 85% 0,rgba(224,192,128,.08),transparent 30%),linear-gradient(180deg,#100f0c,#15120e)}.gate{background:radial-gradient(circle at 70% 15%,rgba(224,192,128,.13),transparent 32%),#0f0e0b}</style>
+</head><body>
+<div id="gate" class="gate"><div class="gate-box"><div class="ey">Kingdom Principles · Week 5</div><div class="gate-title">THE PRINCIPLE OF <b>PROVISION</b></div><div class="gate-copy">Follow the lesson live, answer reflection prompts and polls, and ask an anonymous question at any point.</div><div class="ey">Email</div><input id="email" class="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com"><button class="btn primary" style="width:100%;margin-top:9px" onclick="enter()">Enter Lesson</button><div id="gate-err" class="err hidden"></div><div class="small">Email identifies your saved reflection responses. Anonymous questions are submitted without your email attached.</div></div></div>
+<header class="top"><div class="brand">KINGDOM <b>PRINCIPLES</b></div><div class="live"><span id="dot" class="dot"></span><span id="sync">Connecting</span></div></header>
+<main class="shell">
+<section class="card"><div id="live-k" class="ey">Waiting for lesson</div><div id="live-title" class="title">The Principle of Provision</div><div id="live-sub" class="sub">God Provides What His Purpose Requires</div><div id="live-ref" class="ref">Matthew 6:25-32</div><div id="live-body" class="body">God supplies what is necessary for us to live, obey, serve, endure, and fulfill what He has entrusted to us.</div><ul id="live-points" class="points hidden"></ul></section>
+<section id="poll-zone"></section><section id="prompt-zone"></section>
+<section class="card"><div class="progress"><div><div class="ey">Reflection Progress</div><div>Saved responses</div></div><strong id="prog">0/5</strong></div><div class="bar"><span id="progbar" style="width:0"></span></div></section>
+<section class="card ask"><div class="ey">Anonymous Ask a Question</div><div class="prompt-q">Have a question about provision, trust, stewardship, or the lesson?</div><div class="hint">Send it anonymously. It can be displayed on the main screen by the presenter.</div><textarea id="ask" class="ta" placeholder="Type your question..."></textarea><div class="actions"><button class="btn" onclick="askQuestion()">Send anonymously</button><span id="ask-state" class="state"></span></div><div class="privacy">The question request contains no student email.</div></section>
+<div class="footer">Kingdom Principles · Week 5 · The Principle of Provision</div>
+</main>
+<script src="/kp-provision-data.js"></script><script src="/kp-provision-student.js"></script>
+</body></html>
