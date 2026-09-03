@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Kingdom Principles · The Principle of Provision</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/kp-alignment.css">
+<style>
+:root{--bg:#11100d;--panel:#181611;--panel2:#201d17;--ink:#f5efe3;--muted:#958d80;--line:#373229;--gold:#c8a66a;--sage:#a4ad91}
+.remote{background:radial-gradient(circle at 85% 0,rgba(224,192,128,.08),transparent 30%),linear-gradient(180deg,#100f0c,#15120e)}
+.stage{background:radial-gradient(circle at 78% 18%,rgba(224,192,128,.16),transparent 30%),linear-gradient(135deg,#100f0c,#1b1812)}
+.takeover{background:radial-gradient(circle at 78% 18%,rgba(224,192,128,.14),transparent 32%),linear-gradient(135deg,#0e0d0a,#18150f)}
+.alignment-v-group{margin:16px 0 2px;padding:10px 3px 7px;border-bottom:1px solid rgba(200,166,106,.32);font-family:var(--fc);font-size:.58rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.alignment-v-group:first-child{margin-top:2px}.verse-row{padding-top:12px;padding-bottom:12px}.v-text{font-size:.78rem;line-height:1.42}
+</style>
+</head><body>
+<div id="remote" class="remote hidden">
+<header class="top"><div class="brand">KINGDOM <b>PRINCIPLES</b></div><div class="sync"><span id="r-dot" class="dot"></span><span id="r-sync">Connecting</span></div></header>
+<main class="remote-body">
+<section class="card cue"><div class="ey">Current Projector Cue</div><div class="cue-head"><div><div id="cue-title" class="cue-title">Standby</div><div id="cue-type" class="cue-type">Week 5 · Provision</div></div><div id="cue-num" class="cue-num">00</div></div><div id="cue-notes" class="notes">The Principle of Provision · God Provides What His Purpose Requires</div><div id="next-cue" class="next-cue"><strong>Next</strong>Title</div></section>
+<div class="controls"><button class="btn" onclick="prevSlide()">← Prev</button><button id="next-btn" class="btn primary" onclick="nextSlide()">Start</button><button id="black-btn" class="btn" onclick="toggleBlack()">Black Screen</button><button class="btn danger" onclick="clearTakeover()">Clear Takeover</button></div>
+<details class="panel" open><summary>Slides</summary><div id="slide-list" class="panel-body"></div></details>
+<details class="panel"><summary>Scripture Bank · Push Everywhere</summary><div id="verse-list" class="panel-body"></div></details>
+<details class="panel"><summary><span>Polls</span><span id="poll-badge" class="badge">0</span></summary><div id="poll-list" class="panel-body"></div></details>
+<details class="panel"><summary><span>Anonymous Questions</span><span id="q-badge" class="badge">0</span></summary><div class="panel-body"><div id="q-list"></div><div class="panel-tools"><button class="btn small" onclick="loadAudienceData()">Refresh</button></div></div></details>
+<div class="footer">Kingdom Principles · Week 5 · The Principle of Provision</div>
+</main></div>
+<div id="projector" class="output hidden"><div id="p-stage" class="stage"><div id="p-inner" class="stage-inner"></div></div><div id="p-take" class="takeover hidden"><div id="p-take-inner" class="take-inner"></div></div><div id="p-black" class="black hidden"></div></div>
+<div id="confidence" class="confidence hidden"><div class="conf-top"><div class="conf-brand">KINGDOM <b>PRINCIPLES</b></div><div class="sync"><span class="dot live"></span>CONFIDENCE · WEEK 5</div></div><div class="conf-main"><div class="conf-card conf-current"><div id="conf-k" class="conf-k">Current</div><div id="conf-title" class="conf-title">The Principle of Provision</div><div id="conf-ref" class="conf-ref">Matthew 6:25-32</div></div><div class="conf-side"><div class="conf-card conf-timer"><div class="conf-k">Session Time</div><div id="conf-time" class="conf-time">00:00</div></div><div class="conf-card conf-next"><div class="conf-k">Next</div><div id="conf-next" class="conf-next-title">Title</div></div></div></div><div class="conf-notes"><div class="conf-k">Presenter Notes</div><div id="conf-notes" class="conf-notes-text">Standby.</div></div></div>
+<div id="scriptures" class="scripture-screen hidden"><div id="scripture-content" class="scripture-inner wait"><div class="p-kicker">Kingdom Principles · Scripture Output</div><div class="p-title">WAITING FOR SCRIPTURE</div><p>Push a verse from the remote</p></div></div>
+<div id="obsslides" class="obs-slide hidden"><div id="obs-slide-inner" class="stage-inner"></div></div>
+<div id="obslowerthirds" class="obs-lower hidden"><div id="lower-box" class="lower-box hidden"><div class="lower-series">Kingdom Principles · Week 5</div><div id="lower-title" class="lower-title"></div><div id="lower-sub" class="lower-sub"></div></div></div>
+<script src="/kp-provision-data.js"></script><script src="/kp-provision.js"></script>
+</body></html>
